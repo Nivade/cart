@@ -32,7 +32,7 @@ class Cart
 
         $storedItem['quantity']++;
         $storedItem['price'] = $item->price * $storedItem['quantity'];
-        $storedItem['weight'] = $item->weight * $storedItem['weight'];
+        $storedItem['weight'] = $item->weight * $storedItem['quantity'];
         $this->items[$id] = $storedItem;
         $this->quantity++;
         $this->total += $item->price;

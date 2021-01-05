@@ -13,16 +13,16 @@ class Shipping extends Model
 
     public static function ShippingCostsForWeight($weight)
     {
-        $all = Shipping::orderBy('weight', 'asc')->get();
+        $all = Shipping::orderBy('weight', 'asc');
 
         //dd($all);
 
-        $shipping = $all->where('weight', '<=', $weight)->first();
+        $shipping = Shipping::where('weight', '>', $weight)->first();
 
         if ($shipping === null)
             return Shipping::orderBy('weight', 'desc')->get()->first()->price;
 
 
-        return $shipping->get()->price;
+        return $shipping->price;
     }
 }
